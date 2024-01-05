@@ -36,11 +36,19 @@ const XCountries = () => {
       />
       <div className="country-grid">
         {filteredCountries.length > 0 ? (
-          filteredCountries.map((country) => (
-            <div key={country.cca3} className="country-card">
-              <img src={country.flags.png} alt={`Flag of ${country.name.common}`} />
-              <p>{country.name.common}</p>
-            </div>
+          filteredCountries.map((country, index) => (
+            <React.Fragment key={country.cca3}>
+              {index > 0 && <div className="separator" />}
+              <div className={`country-container`}>
+
+                {/* Updated structure to include country flag and name */}
+                <div className="country-card">
+                  <img src={country.flags.png} alt={`Flag of ${country.name.common}`} />
+                  <p>{country.name.common}</p>
+                </div>
+
+              </div>
+            </React.Fragment>
           ))
         ) : (
           <p>No countries found</p>
