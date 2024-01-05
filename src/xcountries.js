@@ -22,9 +22,13 @@ const XCountries = () => {
     }
   };
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredCountries = countries.filter((country) => {
+    const countryName = country.name.common.toLowerCase();
+    const searchTermLower = searchTerm.toLowerCase();
+    console.log('countryName:', countryName, 'searchTerm:', searchTermLower);
+    return countryName.includes(searchTermLower);
+  });
+  
 
   return (
     <div className="XCountries">
